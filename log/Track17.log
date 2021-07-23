@@ -1,0 +1,4 @@
+2021-07-23 15:05:48,455 track17.py[line:184] ERROR This event loop is already running
+2021-07-23 15:09:04,004 track17.py[line:184] ERROR This event loop is already running
+2021-07-23 15:33:37,279 track17.py[line:133] ERROR Navigation Timeout Exceeded: 30000 ms exceeded.
+2021-07-23 15:33:37,544 track17.py[line:187] ERROR list index out of range

@@ -18,6 +18,7 @@ BANNER = r"""
      /__/:/    \  \::/       \  \:\       \__\/         \__\/    \  \::/       \  \:\    
      \__\/      \__\/         \__\/                               \__\/         \__\/   
 """
+slogan = "Welcome to use jupiter! Jupiter is a logistics information aggregation service."
 # banner 生成地址：http://www.network-science.de/ascii/  Font：isometric3
 # 木星：Jupiter，太阳系距离太阳第五远的行星，服务端口号设为：9595
 VERSION = "1.0.0"
@@ -26,3 +27,16 @@ VERSION = "1.0.0"
 HOST = "0.0.0.0"
 
 PORT = 9595
+
+# 打码平台配置
+# 超级鹰
+CJY_CODE_ID = 1902  # 超级鹰4-6位字母数字验证id
+
+# 卡商平台配置
+
+
+# 代理配置
+PROXY_USERNAME = ''
+PROXY_PASSWORD = ''
+
+
