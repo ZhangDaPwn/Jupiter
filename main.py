@@ -18,7 +18,8 @@ app = FastAPI()
 
 class Tracker(BaseModel):
     platform: str = Field(..., description="The platform is track platform")
-    nums: str = Field(..., description="The muns must be separated by ','")
+    # nums: str = Field(..., description="The muns must be separated by ','")
+    nums: list = Field(..., description="The muns must be list array")
     description: Optional[str] = None
 
 

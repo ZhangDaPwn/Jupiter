@@ -23,7 +23,7 @@ nest_asyncio.apply()  # asyncio默认不允许嵌套时间循环，加上这个�
 
 
 class Track17(object):
-    def __init__(self, nums: str):
+    def __init__(self, nums: list):
         self.headless = False  # 是否使用无头浏览器
         self.use_proxy = False  # 是否使用代理
         self.is_tunnel = False  # 是否为隧道代理
@@ -34,9 +34,11 @@ class Track17(object):
         self.ch = CommonHelper()
         self.hh = HttpHelper()
         self.ph = PyppeteerHelper(user_agent=self.ua)
-        self.num_list = list(filter(lambda s: s and s.strip(), nums.split(',')))
+        self.num_list = nums
+        self.num_str = ','.join(nums)
+        # self.num_list = list(filter(lambda s: s and s.strip(), nums.split(',')))
         self.origin = 'https://www.17track.net'
-        self.url_0 = 'https://t.17track.net/en#nums={}'.format(nums)  # 获取cookie地址
+        self.url_0 = 'https://t.17track.net/en#nums={}'.format(self.num_str)  # 获取cookie地址
         self.url_1 = 'https://t.17track.net/restapi/track'  # 获取物流数据地址
         self.expire_time = 600  # cookie等数据存活时长
         self.status_code = {
@@ -252,8 +254,7 @@ if __name__ == '__main__':
         'SF6043144823289',
     ]
 
-    nums = ','.join(num0 + num1 + num2 + num3 + num4 + num5 + num6)
-    # nums = ','.join(num1)
+    nums = num0 + num1 + num2 + num3 + num4 + num5 + num6
     track = Track17(nums=nums)
     result = track.main()
     print(json.dumps(result, indent=2, ensure_ascii=False))
