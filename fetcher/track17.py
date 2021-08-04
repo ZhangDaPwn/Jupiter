@@ -84,14 +84,20 @@ class Track17(object):
                 print("验证码识别结果：", v_result)
                 if v_result['err_str'] == 'OK':
                     code = v_result['pic_str']
+                    print("code:", code)
                     # 获取验证码输入框，输入验证码
-                    await page.type('#ver-code-input', code, {'delay': self.ch.input_time})
-                    await asyncio.sleep(1)
+                    # await page.type('#ver-region_code.txt-input', code, {'delay': self.ch.input_time})  # 之前输入框
+                    await page.type('#ver-code-input.form-control', code, {'delay': self.ch.input_time})
+                    print("输入验证码成功！")
+                    time.sleep(1)
                     # 填写完验证码，点击confirm按钮
-                    confirm_button = await page.xpath(
-                        '//button[@class="btn btn-block btn-primary btn-submit waves-effect"]')
+                    # confirm_button = await page.xpath(
+                    #     '//button[@class="btn btn-block btn-primary btn-submit waves-effect"]')
+                    confirm_button = await page.xpath('//div[@class="modal-body"]/button')
                     await confirm_button[0].click()
-                    await asyncio.sleep(5)
+                    print("打码成功！")
+                    time.sleep(3)
+                    # await asyncio.sleep(5)
         except:
             self.log.info('本次爬取未出现验证码')
 
@@ -125,6 +131,7 @@ class Track17(object):
                 pass
 
             cookies = await page.cookies()
+            print("cookies:", cookies)
 
             header = {
                 'Cookie': self.ch.cookies_to_cookie(cookies)
@@ -181,6 +188,7 @@ class Track17(object):
                     "guid": "",
                     "timeZoneOffset": -480}
             data = self.hh.post(url=self.url_1, header=headers, data=json.dumps(data)).json
+            print(data)
             info = await self.parse(data=data)
             if not len(info[0]['track_number']):
                 self.log.info("本次未获取到数据，请检查是否与UA或者PROXY有关！UA:{} PROXY:{}".format(self.ua, ''))
@@ -255,7 +263,8 @@ if __name__ == '__main__':
     ]
 
     nums = num0 + num1 + num2 + num3 + num4 + num5 + num6
-    track = Track17(nums=nums)
+    track = Track17(nums=num1)
     result = track.main()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    print(result, type(result))
+    # print(json.dumps(result, indent=2, ensure_ascii=False))
     print("耗时：", time.time() - start_time)
