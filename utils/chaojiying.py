@@ -8,8 +8,8 @@ from hashlib import md5
 class VerifyHandler(object):
 
     def __init__(self):
-        self.username = '17705643302'
-        password = 'dapwn123'.encode('utf-8')
+        self.username = '账号'
+        password = '密码'.encode('utf-8')
         self.password = md5(password).hexdigest()
         self.soft_id = 'eb870c42c2aa911d93bf506e38f6d574'
         self.vid = 1902  # 4-6位字母数字验证id
