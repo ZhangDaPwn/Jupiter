@@ -11,7 +11,7 @@ class VerifyHandler(object):
         self.username = '账号'
         password = '密码'.encode('utf-8')
         self.password = md5(password).hexdigest()
-        self.soft_id = 'eb870c42c2aa911d93bf506e38f6d574'
+        self.soft_id = ''
         self.vid = 1902  # 4-6位字母数字验证id
         self.base_params = {
             'user': self.username,
